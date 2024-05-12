@@ -3,8 +3,8 @@
 // Display nearby hospitals from google maps
 
 async function initMap() {
-  var lat = 23.8151;
-  var lng = 90.4256;
+  var lat = 22.35986956234364;
+  var lng = 91.83315844578688;
   var location = { lat, lng }; // Replace with your location
 
   function getLocation() {
