@@ -9,7 +9,6 @@ function getRandomDate() {
 fetch("https://dummyjson.com/users")
   .then((response) => response.json())
   .then((data) => {
-    // console.log(data.users);
     var table = document.getElementById("usersTable");
     data["users"].slice(0, 15).forEach((user) => {
       var row = table.insertRow(-1);
@@ -21,7 +20,7 @@ fetch("https://dummyjson.com/users")
       cell1.innerHTML = user.firstName + " " + user.lastName;
       cell2.innerHTML = user.age;
       cell3.innerHTML = user.gender;
-      cell4.innerHTML = user.bloodGroup;
+      cell4.innerHTML = "Dhaka, Bangladesh"; // Set location to Dhaka, Bangladesh
       cell5.innerHTML = getRandomDate().toLocaleDateString();
     });
   })
