@@ -20,10 +20,19 @@
                     </select>
                 </div>
                 <div class="col-lg-3 col-sm-6" data-aos="fade-in" data-aos-duration="600">
-                    <button id="search" class="btn w-100" style="background-color: red; color: white;" onclick="window.location.href='donors.html';">Search Donors</button>
+                    <button id="search" class="btn w-100" style="background-color: red; color: white;" onclick="searchDonors()">Search Donors</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+
+<script>
+function searchDonors() {
+    var division = document.getElementById('division').value;
+    var upazila = document.getElementById('upazila').value;
+    window.location.href = 'donors.html?state=' + encodeURIComponent(division) + '&city=' + encodeURIComponent(upazila);
+}
+</script>
 </div>
