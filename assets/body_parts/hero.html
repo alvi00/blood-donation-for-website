@@ -30,14 +30,9 @@
 
 <script>
 function searchDonors() {
-    var division = document.getElementById('division').value;
-    var upazila = document.getElementById('upazila').value;
-    if (!division || !upazila) {
-        alert('Please select both a division and an upazila.');
-        return;
-    }
-    window.location.href = 'donors.html?state=' + encodeURIComponent(division) + '&city=' + encodeURIComponent(upazila);
+    window.location.href = 'donors.html';
 }
 </script>
+</div>
 </div>
 </div>
