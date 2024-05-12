@@ -44,7 +44,7 @@ fetch("https://dummyjson.com/users")
       cell1.innerHTML = "<i class='fa-solid fa-droplet'></i>";
       cell2.innerHTML = user.firstName + " " + user.lastName;
       cell3.innerHTML = user.bloodGroup;
-      cell4.innerHTML = user.address.address;
+     
       cell5.innerHTML = getRandomDate().toLocaleDateString();
     });
   })
