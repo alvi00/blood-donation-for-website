@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Mediconnectufy</title>
+    <title>Blood Donation App</title>
 
     <!-- Google Fonts -->
     <link
@@ -188,39 +188,26 @@
             .then(response => response.json())
             .then(data => {
                 var table = document.getElementById('usersTable').getElementsByTagName('tbody')[0];
+                const locations = ["Gulshan, Dhaka", "Mirpur, Dhaka", "Lalmatia, Dhaka", "Banani, Dhaka", "Basundhara, Dhaka"]; // List of locations
+                let locationIndex = 0; // To cycle through locations
+ 
                 data["users"].forEach((user, i) => {
                     var row = table.insertRow(-1);
                     var cell1 = row.insertCell(0);
                     var cell2 = row.insertCell(1);
                     var cell3 = row.insertCell(2);
                     var cell4 = row.insertCell(3);
+ 
                     cell1.innerHTML = user.firstName;
                     cell2.innerHTML = user.age;
                     cell3.innerHTML = user.bloodGroup;
-                    cell4.innerHTML = '<a href="#" data-toggle="modal" data-target="#userInfoModal" onclick="showUserInfo(' + i + ')"><i class="fa-solid fa-circle-info"></i></a>';
+                    cell4.innerHTML = locations[locationIndex]; // Set location from the array
+ 
+                    // Cycle through the locations array
+                    locationIndex = (locationIndex + 1) % locations.length;
                 });
             })
             .catch(error => console.error('Error:', error));
-
-        function showUserInfo(index) {
-            fetch('https://dummyjson.com/users')
-                .then(response => response.json())
-                .then(data => {
-                    var modalBody = document.querySelector('#userInfoModal .modal-body');
-                    modalBody.innerHTML = '';
-                    var keys = ["firstName", "lastName", "age", "gender", "email", "phone", "bloodGroup", "height", "weight", "image"];
-                    if (data["users"][index].hasOwnProperty("image")) {
-                        modalBody.innerHTML += '<img src="' + data["users"][index]["image"] + '" alt="User Image"><br>';
-                    }
-                    keys.forEach(key => {
-                        if (data["users"][index].hasOwnProperty(key) && key !== "image") {
-                            modalBody.innerHTML += '<p><strong>' + key + ':</strong> ' + data["users"][index][key] + '</p>';
-                        }
-                    });
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
     </script>
 
     <!-- Vendor JS Files -->
