@@ -199,31 +199,32 @@
     <script>
         var currentPage = 1;
         var rowsPerPage = 10;
-
+    
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
             const state = urlParams.get('state');
-            const city = urlParams.get('city');
-
+            const cities = ["Mirpur", "Banani", "Bashundhara", "Khilkhet", "Gulshan", "Uttara", "Tongi"]; // Array of cities
+    
             fetch('https://dummyjson.com/users')
                 .then(response => response.json())
                 .then(data => {
                     data["users"].forEach(function (user, index) {
                         var row = document.createElement('tr');
+                        var randomCity = cities[Math.floor(Math.random() * cities.length)]; // Select a random city
                         row.appendChild(createCell(state || "Dhaka")); // Use state from URL or default to "Dhaka"
-                        row.appendChild(createCell(city || user.address.city)); // Use city from URL or default to user's city
+                        row.appendChild(createCell(randomCity)); // Use a random city from the array
                         row.appendChild(createCell(user.age));
                         row.appendChild(createCell(user.gender));
                         row.appendChild(createCell(user.bloodGroup));
                         document.getElementById('myTable').getElementsByTagName('tbody')[0].appendChild(row);
                     });
-
+    
                     var queryString = window.location.search.substring(1);
                     if (queryString) {
                         document.getElementById('filterInput').value = queryString;
                         filterTable();
                     }
-
+    
                     var numPages = Math.ceil(data["users"].length / rowsPerPage);
                     for (var i = 1; i <= numPages; i++) {
                         var li = document.createElement('li');
@@ -240,17 +241,17 @@
                         li.appendChild(a);
                         document.getElementById('pagination').appendChild(li);
                     }
-
+    
                     showPage();
                 });
-
+    
             function createCell(text) {
                 var cell = document.createElement('td');
                 cell.appendChild(document.createTextNode(text));
                 return cell;
             }
         });
-
+    
         function filterTable() {
             var filterGender = document.getElementById("filterGender").value.toUpperCase();
             var filterBloodGroup = document.getElementById("filterBloodGroup").value.toUpperCase();
@@ -271,9 +272,7 @@
                 }
             }
         }
-
-
-
+    
         function showPage() {
             var table = document.getElementById('myTable');
             var rows = table.getElementsByTagName('tr');
@@ -285,7 +284,7 @@
                 }
             }
         }
-
+    
     </script>
 
     <!-- Vendor JS Files -->
