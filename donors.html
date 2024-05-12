@@ -204,16 +204,18 @@
             fetch('https://dummyjson.com/users')
                 .then(response => response.json())
                 .then(data => {
-                    // console.log(data["users"].length);
-                    // Populate the table
                     data["users"].forEach(function (user, index) {
-                        var row = document.createElement('tr');
-                        row.appendChild(createCell(user.address.state));
-                        row.appendChild(createCell(user.address.city));
-                        row.appendChild(createCell(user.age));
-                        row.appendChild(createCell(user.gender));
-                        row.appendChild(createCell(user.bloodGroup));
-                        document.getElementById('myTable').getElementsByTagName('tbody')[0].appendChild(row);
+                        // Filter for specific city names
+                        var allowedCities = ["Basundhara", "Gulshan", "Banani", "Mirpur", "Uttara", "Lalmatia"];
+                        if (allowedCities.includes(user.address.city)) {
+                            var row = document.createElement('tr');
+                            row.appendChild(createCell(user.address.state));
+                            row.appendChild(createCell(user.address.city));
+                            row.appendChild(createCell(user.age));
+                            row.appendChild(createCell(user.gender));
+                            row.appendChild(createCell(user.bloodGroup));
+                            document.getElementById('myTable').getElementsByTagName('tbody')[0].appendChild(row);
+                        }
                     });
 
                     // Get the query string from the URL
@@ -320,4 +322,5 @@
 
 </body>
 
+</html>
 </html>
