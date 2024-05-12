@@ -10,6 +10,9 @@ fetch("https://dummyjson.com/users")
   .then((response) => response.json())
   .then((data) => {
     var table = document.getElementById("usersTable");
+    const locations = ["Gulshan, Dhaka", "Mirpur, Dhaka", "Lalmatia, Dhaka", "Banani, Dhaka", "Basundhara, Dhaka"];
+    let locationIndex = 0;
+
     data["users"].slice(0, 15).forEach((user) => {
       var row = table.insertRow(-1);
       var cell1 = row.insertCell(0);
@@ -20,7 +23,8 @@ fetch("https://dummyjson.com/users")
       cell1.innerHTML = user.firstName + " " + user.lastName;
       cell2.innerHTML = user.age;
       cell3.innerHTML = user.gender;
-      cell4.innerHTML = "Dhaka, Bangladesh"; // Set location to Dhaka, Bangladesh
+      cell4.innerHTML = locations[locationIndex]; // Set location from the array
+      locationIndex = (locationIndex + 1) % locations.length; // Cycle through the locations array
       cell5.innerHTML = getRandomDate().toLocaleDateString();
     });
   })
