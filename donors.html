@@ -201,13 +201,17 @@
         var rowsPerPage = 10;
 
         document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const state = urlParams.get('state');
+            const city = urlParams.get('city');
+
             fetch('https://dummyjson.com/users')
                 .then(response => response.json())
                 .then(data => {
                     data["users"].forEach(function (user, index) {
                         var row = document.createElement('tr');
-                        row.appendChild(createCell("Dhaka")); // Fixed state to "Dhaka"
-                        row.appendChild(createCell(user.address.city));
+                        row.appendChild(createCell(state || "Dhaka")); // Use state from URL or default to "Dhaka"
+                        row.appendChild(createCell(city || user.address.city)); // Use city from URL or default to user's city
                         row.appendChild(createCell(user.age));
                         row.appendChild(createCell(user.gender));
                         row.appendChild(createCell(user.bloodGroup));
