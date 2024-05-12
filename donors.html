@@ -205,31 +205,22 @@
                 .then(response => response.json())
                 .then(data => {
                     data["users"].forEach(function (user, index) {
-                        // Filter for specific city names
-                        var allowedCities = ["Basundhara", "Gulshan", "Banani", "Mirpur", "Uttara", "Lalmatia"];
-                        if (allowedCities.includes(user.address.city)) {
-                            var row = document.createElement('tr');
-                            row.appendChild(createCell(user.address.state));
-                            row.appendChild(createCell(user.address.city));
-                            row.appendChild(createCell(user.age));
-                            row.appendChild(createCell(user.gender));
-                            row.appendChild(createCell(user.bloodGroup));
-                            document.getElementById('myTable').getElementsByTagName('tbody')[0].appendChild(row);
-                        }
+                        var row = document.createElement('tr');
+                        row.appendChild(createCell("Dhaka")); // Fixed state to "Dhaka"
+                        row.appendChild(createCell(user.address.city));
+                        row.appendChild(createCell(user.age));
+                        row.appendChild(createCell(user.gender));
+                        row.appendChild(createCell(user.bloodGroup));
+                        document.getElementById('myTable').getElementsByTagName('tbody')[0].appendChild(row);
                     });
 
-                    // Get the query string from the URL
                     var queryString = window.location.search.substring(1);
-
-                    // Set the input field value and filter the table
                     if (queryString) {
                         document.getElementById('filterInput').value = queryString;
                         filterTable();
                     }
 
-                    // Add pagination buttons
                     var numPages = Math.ceil(data["users"].length / rowsPerPage);
-                    // console.log(numPages);
                     for (var i = 1; i <= numPages; i++) {
                         var li = document.createElement('li');
                         li.className = 'page-item';
@@ -246,7 +237,6 @@
                         document.getElementById('pagination').appendChild(li);
                     }
 
-                    // Show the first page
                     showPage();
                 });
 
