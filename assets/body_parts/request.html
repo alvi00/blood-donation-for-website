@@ -10,22 +10,20 @@
                 </div>
                 <div class="row">
                     <div class="col-12 container">
-                        <div class="table-responsive">
-                            <table class="table table-dark table-striped" id="requestTable">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Name</th>
-                                        <th>Requested Blood Group</th>
-                                        <th>Location</th>
-                                        <th>Request Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Content goes here -->
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="table table-dark table-striped" id="requestTable">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Requested Blood Group</th>
+                                    <th>Location</th>
+                                    <th>Request Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Content goes here -->
+                            </tbody>
+                        </table>
                         <center><button class="btn" style="background-color: red; color: white;">Browse All
                                 Request</button></center>
 
@@ -138,24 +136,4 @@ function handleSubmit(event) {
 }
 </script>
 </div>
-</div>
-</div>
-
-<style>
-.table-responsive {
-    overflow-x: auto; /* Allows horizontal scrolling within the container */
-    margin-bottom: 20px; /* Space below the table */
-}
-
-.table {
-    width: 100%; /* Ensures the table takes up the full width of its container */
-    min-width: 600px; /* Minimum width of the table to maintain layout integrity */
-}
-
-@media screen and (max-width: 768px) {
-    .table-responsive {
-        margin-bottom: 10px; /* Less space on smaller screens */
-    }
-}
-</style>
 </div>
